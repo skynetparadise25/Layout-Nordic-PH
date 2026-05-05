@@ -1,5 +1,6 @@
 import { SectionTitle } from '../components/Shared';
 import { ShieldCheck, Award, Zap, Globe } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function About() {
   return (
@@ -26,14 +27,21 @@ export default function About() {
                </div>
             </div>
           </div>
-          <div className="aspect-square bg-nordic-gray-light p-1 w-full max-w-md mx-auto">
-             <div className="h-full w-full border border-nordic-black/10 flex items-center justify-center p-12 text-center">
-                <div>
-                   <div className="w-20 h-20 bg-nordic-black text-white mx-auto mb-8 flex items-center justify-center font-display font-bold text-3xl">LN</div>
-                   <p className="font-display italic text-lg leading-relaxed">"Less is more, but functional is everything."</p>
-                </div>
-             </div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="aspect-square bg-nordic-gray-light relative overflow-hidden group"
+          >
+             <img 
+               src="https://images.unsplash.com/photo-1600880212319-7524ebdeea44?auto=format&fit=crop&q=80&w=800&h=800" 
+               alt="Layout Nordic Studio" 
+               className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+               referrerPolicy="no-referrer"
+             />
+             <div className="absolute inset-0 border-[24px] border-white/50 m-4 pointer-events-none"></div>
+          </motion.div>
         </div>
       </section>
 

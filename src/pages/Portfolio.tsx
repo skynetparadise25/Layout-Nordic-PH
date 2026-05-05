@@ -1,5 +1,6 @@
 import { ArrowRight, Filter, ExternalLink } from 'lucide-react';
 import { SectionTitle } from '../components/Shared';
+import { motion } from 'motion/react';
 
 export default function Portfolio() {
   const projects = [
@@ -61,16 +62,28 @@ export default function Portfolio() {
             <div key={i} className="group">
                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                   <div className="lg:col-span-7">
-                     <div className="aspect-[16/10] bg-nordic-gray-light relative overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center text-nordic-accent tracking-widest font-black opacity-20 text-4xl">
-                           {p.title.toUpperCase()}
-                        </div>
+                     <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.5 }}
+                        className="aspect-[16/10] bg-nordic-gray-light relative overflow-hidden group"
+                     >
+                        <img 
+                          src={
+                            i === 0 ? "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1280&h=800" :
+                            i === 1 ? "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1280&h=800" :
+                            i === 2 ? "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1280&h=800" :
+                            "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1280&h=800"
+                          }
+                          alt={p.title}
+                          className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all duration-700"
+                          referrerPolicy="no-referrer"
+                        />
                         <div className="absolute top-4 left-4 flex gap-2">
                            {p.tags.map(tag => (
-                              <span key={tag} className="bg-white px-3 py-1 text-[10px] uppercase font-bold tracking-widest border border-nordic-black/5">{tag}</span>
+                              <span key={tag} className="bg-white px-3 py-1 text-[10px] uppercase font-bold tracking-widest border border-nordic-black/5 shadow-sm">{tag}</span>
                            ))}
                         </div>
-                     </div>
+                     </motion.div>
                   </div>
                   <div className="lg:col-span-5 pt-4">
                      <p className="text-xs font-bold tracking-[0.3em] uppercase text-nordic-accent mb-4">{p.location}</p>

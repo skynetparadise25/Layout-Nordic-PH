@@ -1,6 +1,7 @@
 import { CheckCircle2, ArrowRight, Maximize, Ruler, PencilRuler, Eye, Briefcase, Zap } from 'lucide-react';
 import { SectionTitle } from '../components/Shared';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -94,13 +95,25 @@ export default function Services() {
                   Discuss this service
                 </button>
               </div>
-              <div className="aspect-square bg-nordic-gray-light relative overflow-hidden group">
-                 <div className="absolute inset-0 bg-nordic-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                 {/* Visual Placeholder for Service Detail */}
-                 <div className="h-full w-full flex items-center justify-center">
-                    <p className="text-xs uppercase tracking-[0.4em] font-bold text-nordic-accent opacity-30 rotate-90">{s.id} visualization</p>
-                 </div>
-              </div>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="aspect-square bg-nordic-gray-light relative overflow-hidden group"
+              >
+                 <img 
+                   src={
+                     s.id === 'spatial' ? "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800&h=800" :
+                     s.id === 'viz' ? "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800&h=800" :
+                     "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800&h=800"
+                   }
+                   alt={s.title}
+                   className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                   referrerPolicy="no-referrer"
+                 />
+                 <div className="absolute inset-0 bg-nordic-black/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              </motion.div>
             </div>
           </section>
         ))}

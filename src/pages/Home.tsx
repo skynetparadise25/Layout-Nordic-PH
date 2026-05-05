@@ -11,37 +11,48 @@ export default function Home() {
       icon: Maximize,
       title: "Space Efficiency Planning",
       description: "We rethink your floor plan to maximize every square meter, ensuring zero wasted space and optimized user flow.",
-      features: ["Traffic flow analysis", "Commercial zoning", "Adaptive reuse plans"]
+      features: ["Traffic flow analysis", "Commercial zoning", "Adaptive reuse plans"],
+      image: "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800&h=800"
     },
     {
       icon: PencilRuler,
       title: "Photorealistic 3D Rendering",
       description: "High-fidelity visualizations that allow you to see the finished project before a single block is laid.",
-      features: ["Material accuracy", "Lighting simulation", "Panoramic views"]
+      features: ["Material accuracy", "Lighting simulation", "Panoramic views"],
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800&h=800"
     },
     {
       icon: Ruler,
       title: "Technical Layout Design",
       description: "Precise blueprints and technical drawings for contractors, ensuring flawless execution of design concepts.",
-      features: ["Furniture schedules", "Lighting plans", "Construction detailing"]
+      features: ["Furniture schedules", "Lighting plans", "Construction detailing"],
+      image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=800&h=800"
     }
   ];
 
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center relative overflow-hidden bg-white">
+      <section className="min-h-[90vh] flex items-center relative overflow-hidden bg-nordic-white">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1920&h=1080" 
+            alt="Minimalist Architecture" 
+            className="w-full h-full object-cover opacity-20 grayscale transition-all duration-700 hover:opacity-30"
+            referrerPolicy="no-referrer"
+          />
+        </div>
         <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="text-nordic-gray font-medium tracking-[0.3em] uppercase text-xs mb-6 block">Premium Architecture Solutions</span>
-              <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 leading-[0.95] tracking-tighter">
+              <h1 className="text-6xl md:text-8xl font-display font-bold mb-8 leading-[0.9] tracking-tighter text-balance">
                 Maximize Space. <br />
-                <span className="text-nordic-accent">Minimize Waste.</span>
+                <span className="text-nordic-accent italic font-light">Minimize Waste.</span>
               </h1>
               <p className="text-xl text-nordic-gray-dark mb-10 leading-relaxed max-w-xl">
                 We bridge the gap between architectural vision and operational efficiency. Premium layout planning and visualization for the modern Philippine landscape.
@@ -62,25 +73,18 @@ export default function Home() {
                 </button>
               </div>
               
-              <div className="mt-16 pt-8 border-t border-nordic-gray-light grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="mt-16 pt-8 border-t border-nordic-black/10 grid grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                   <p className="text-3xl font-display font-bold">120+</p>
-                  <p className="text-sm text-nordic-gray uppercase tracking-widest mt-1">Completed Projects</p>
+                  <p className="text-[10px] text-nordic-gray uppercase tracking-widest font-bold mt-1">Completed Projects</p>
                 </div>
                 <div>
                   <p className="text-3xl font-display font-bold">15%</p>
-                  <p className="text-sm text-nordic-gray uppercase tracking-widest mt-1">Avg. Space Saved</p>
+                  <p className="text-[10px] text-nordic-gray uppercase tracking-widest font-bold mt-1">Avg. Space Saved</p>
                 </div>
               </div>
             </motion.div>
           </div>
-        </div>
-        
-        {/* Abstract Nordic Shape */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-nordic-gray-light -z-0 hidden lg:block">
-           <div className="h-full w-full flex items-center justify-center opacity-10 grayscale">
-              <Building2 size={400} />
-           </div>
         </div>
       </section>
 
@@ -88,9 +92,14 @@ export default function Home() {
       <section className="section-padding bg-nordic-black text-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <span className="text-nordic-accent font-medium tracking-[0.2em] uppercase text-xs mb-4 block">The Problem</span>
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight">
                 Bad Layouts Cost More Than Bad Decorations.
               </h2>
               <p className="text-nordic-accent text-lg mb-10 leading-relaxed">
@@ -105,31 +114,39 @@ export default function Home() {
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 items-center">
                     <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-white">
-                      <CheckCircle2 size={14} />
+                      <CheckCircle2 size={12} />
                     </div>
-                    <span className="text-white font-medium">{item}</span>
+                    <span className="text-white font-medium text-sm">{item}</span>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-[4/5] bg-nordic-accent/10 border border-white/10 flex items-center justify-center p-12">
-                 <div className="text-center">
-                    <Maximize size={80} className="mx-auto mb-6 text-nordic-accent opacity-50" />
-                    <p className="text-xl font-display italic">"Efficiency is not about making things smaller, it's about making them better positioned."</p>
-                 </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="aspect-[4/5] bg-nordic-accent/10 border border-white/10 overflow-hidden">
+                 <img 
+                   src="https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=800&h=1000" 
+                   alt="Architectural Blueprint" 
+                   className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-700"
+                   referrerPolicy="no-referrer"
+                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white text-nordic-black p-8 max-w-xs shadow-2xl">
-                 <p className="text-sm font-bold uppercase tracking-widest mb-2">Nordic Philosophy</p>
-                 <p className="text-xs leading-relaxed text-nordic-gray-dark">We apply Scandinavian functional minimalism to Philippine spatial dynamics.</p>
+                 <p className="text-xs font-bold uppercase tracking-widest mb-2">Nordic Philosophy</p>
+                 <p className="text-[11px] leading-relaxed text-nordic-gray-dark">We apply Scandinavian functional minimalism to Philippine spatial dynamics, ensuring every square meter generates ROI.</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding">
+      <section className="section-padding" id="services">
         <div className="container-custom">
           <SectionTitle 
             title="Design That Drives Business" 
@@ -144,6 +161,7 @@ export default function Home() {
                 title={s.title}
                 description={s.description}
                 features={s.features}
+                imageUrl={s.image}
                 onClick={() => navigate('/services')}
               />
             ))}
@@ -168,21 +186,47 @@ export default function Home() {
             </button>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="group cursor-pointer">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div 
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="group cursor-pointer"
+              onClick={() => navigate('/portfolio')}
+            >
               <div className="aspect-video bg-nordic-accent/20 mb-6 overflow-hidden relative">
-                 <div className="absolute inset-0 flex items-center justify-center text-nordic-gray text-xs tracking-widest uppercase font-bold opacity-30">Luxury Boutique Hotel Visualization</div>
+                 <img 
+                   src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1280&h=720" 
+                   alt="Azure Resort & Spa" 
+                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                 />
+                 <div className="absolute inset-0 bg-nordic-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="text-white font-bold tracking-widest uppercase text-xs border border-white/40 px-6 py-3 backdrop-blur-sm">View Project</span>
+                 </div>
               </div>
               <h3 className="text-2xl font-display font-bold mb-2">Azure Resort & Spa</h3>
-              <p className="text-nordic-gray">Bacolod City, PH • Space Planning + 3D Render</p>
-            </div>
-            <div className="group cursor-pointer">
+              <p className="text-nordic-gray text-sm">Bacolod City, PH • Space Planning + 3D Render</p>
+            </motion.div>
+            <motion.div 
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="group cursor-pointer"
+              onClick={() => navigate('/portfolio')}
+            >
               <div className="aspect-video bg-nordic-accent/20 mb-6 overflow-hidden relative">
-                 <div className="absolute inset-0 flex items-center justify-center text-nordic-gray text-xs tracking-widest uppercase font-bold opacity-30">Minimalist Office HQ Planning</div>
+                 <img 
+                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1280&h=720" 
+                   alt="GrowthHub Co-working" 
+                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   referrerPolicy="no-referrer"
+                 />
+                 <div className="absolute inset-0 bg-nordic-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="text-white font-bold tracking-widest uppercase text-xs border border-white/40 px-6 py-3 backdrop-blur-sm">View Project</span>
+                 </div>
               </div>
               <h3 className="text-2xl font-display font-bold mb-2">GrowthHub Co-working</h3>
-              <p className="text-nordic-gray">Makati, PH • Interior Efficiency Layout</p>
-            </div>
+              <p className="text-nordic-gray text-sm">Makati, PH • Interior Efficiency Layout</p>
+            </motion.div>
           </div>
         </div>
       </section>

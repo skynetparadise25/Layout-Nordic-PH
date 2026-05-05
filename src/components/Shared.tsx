@@ -97,23 +97,30 @@ export const SectionTitle = ({ title, subtitle, centered = false }: { title: str
   </div>
 );
 
-export const ServiceCard = ({ icon: Icon, title, description, features, onClick }: { icon: any, title: string, description: string, features: string[], onClick: () => void }) => (
-  <div className="nordic-card group cursor-pointer flex flex-col h-full" onClick={onClick}>
-    <div className="mb-8 w-14 h-14 bg-nordic-gray-light flex items-center justify-center group-hover:bg-nordic-black group-hover:text-white transition-colors">
-      <Icon size={24} />
-    </div>
-    <h3 className="text-2xl font-display font-bold mb-4">{title}</h3>
-    <p className="text-nordic-gray mb-8 leading-relaxed flex-grow">{description}</p>
-    <ul className="space-y-3 mb-10">
-      {features.map((f, i) => (
-        <li key={i} className="flex items-start gap-3 text-sm font-medium">
-          <CheckCircle2 size={16} className="text-nordic-black shrink-0 mt-0.5" />
-          <span>{f}</span>
-        </li>
-      ))}
-    </ul>
-    <div className="inline-flex items-center gap-2 font-bold text-sm group-hover:translate-x-2 transition-transform">
-      Learn More <ArrowRight size={16} />
+export const ServiceCard = ({ icon: Icon, title, description, features, onClick, imageUrl }: { icon: any, title: string, description: string, features: string[], onClick: () => void, imageUrl?: string }) => (
+  <div className="nordic-card group cursor-pointer flex flex-col h-full relative overflow-hidden" onClick={onClick}>
+    {imageUrl && (
+      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+        <img src={imageUrl} alt="" className="w-full h-full object-cover grayscale" referrerPolicy="no-referrer" />
+      </div>
+    )}
+    <div className="relative z-10 flex flex-col h-full">
+      <div className="mb-8 w-14 h-14 bg-nordic-gray-light flex items-center justify-center group-hover:bg-nordic-black group-hover:text-white transition-colors">
+        <Icon size={24} />
+      </div>
+      <h3 className="text-2xl font-display font-bold mb-4">{title}</h3>
+      <p className="text-nordic-gray mb-8 leading-relaxed flex-grow">{description}</p>
+      <ul className="space-y-3 mb-10">
+        {features.map((f, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm font-medium">
+            <CheckCircle2 size={16} className="text-nordic-black shrink-0 mt-0.5" />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="inline-flex items-center gap-2 font-bold text-sm group-hover:translate-x-2 transition-transform">
+        Learn More <ArrowRight size={16} />
+      </div>
     </div>
   </div>
 );
